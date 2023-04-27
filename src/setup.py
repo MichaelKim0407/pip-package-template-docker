@@ -5,6 +5,10 @@ from setuptools import setup, find_packages
 from pip_package_template_docker import __version__
 
 project_dir = Path(__file__).parent
+try:
+    long_description = (project_dir / 'README.md').read_text()
+except FileNotFoundError:
+    long_description = ''
 
 deps = ()
 
@@ -40,7 +44,7 @@ setup(
     author='Zheng Jin',
     author_email='mkim0407@gmail.com',
     description='Project template for Dockerized pip package development.',
-    long_description=(project_dir / 'README.md').read_text(),
+    long_description=long_description,
     long_description_content_type='text/markdown',
 
     install_requires=deps,
